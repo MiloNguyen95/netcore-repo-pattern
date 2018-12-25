@@ -40,10 +40,12 @@ public interface IProductRepository : IGenericRepository<Product>
 
 Implementation
 ```C#
-public class ProductRepository<T> : GenericRepository<T>, IProductRepository<T> where T : class
+public class ProductRepository : GenericRepository<Product>, IProductRepository
 {
+    private readonly YourDbContext _context;
     public ProductRepository(YourDbContext context) : base(context)
     {
+        _context = context;
     }
     // Implement your custom methods
 }
